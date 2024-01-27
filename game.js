@@ -12,6 +12,14 @@ $(document).keypress(function () {
   }
 });
 
+$(document).on("touchstart", function () {
+  if (!started) {
+    $("#level-title").text(`Level ${level}`);
+    nextSequence();
+    started = true;
+  }
+});
+
 $(".btn").click(function (event) {
   var userChosenColour = event.target.id;
   userClickedPattern.push(userChosenColour);
@@ -37,7 +45,7 @@ function checkAnswer(currentLevel) {
     setTimeout(function () {
       $("body").removeClass("game-over");
     }, 200);
-    $("#level-title").text("Game Over, Press A Key to Start");
+    $("#level-title").text("Game Over, Press A Key or touch anywhere to Start");
     startOver();
   }
 }
